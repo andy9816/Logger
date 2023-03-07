@@ -1,0 +1,17 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+    <evaluator>
+        <expression>message.startsWith("PROFILE")</expression>
+    </evaluator>
+    <onMatch>ACCEPT</onMatch>
+    <onMismatch>DENY</onMismatch>
+    </filter>
+    <root level="trace">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
